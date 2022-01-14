@@ -22,7 +22,7 @@ if (!empty($_POST)) {
 	    $member = $stmt->fetch(PDO::FETCH_ASSOC);
 //  ここにパスワードのチェック処理を完成させる
   		if($member['password'] == &password) {
-			$error['login'] = 'failed';
+			$error['login'] = 'true';
 				// ログイン成功
 
 //  ここにセッションハイジャック対策を追加
