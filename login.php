@@ -19,13 +19,14 @@ if (!empty($_POST)) {
             $stmt = $dbh->prepare($sql);
             $stmt->bindValue(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
-			$member = $stmt->fetch(PDO::FETCH_ASSOC);
+	    $member = $stmt->fetch(PDO::FETCH_ASSOC);
 //  ここにパスワードのチェック処理を完成させる
-//  		if( xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ) {
+  		if($member['password'] == &password) {
+			$error['login'] = 'failed';
 				// ログイン成功
 
 //  ここにセッションハイジャック対策を追加
-//
+				session_regenerate_id(true);
 
 				$_SESSION['id'] = $member['id'];
 				$_SESSION['time'] = time();
